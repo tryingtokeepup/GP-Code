@@ -3,7 +3,10 @@ class Heap:
         self.storage = []
 
     def insert(self, value):
-        pass
+        # initially, just put the given value at the end of the storage array
+        self.storage.append(value)
+        # call bubble_up to get the new element we just inserted into a valid spot in the heap
+        self._bubble_up(len(self.storage) - 1)
 
     def delete(self):
         pass
