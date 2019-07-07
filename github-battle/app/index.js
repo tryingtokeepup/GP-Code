@@ -10,17 +10,20 @@ import './index.css';
 function isAuthed() {
   return true;
 }
+function showWarning() {
+  return true;
+}
 export default class App extends React.Component {
   render() {
     const authed = isAuthed();
+
     const name = 'Kai';
     // this is the description of the UI
+
     return (
       <div>
-        <h1>Hi, my name is {name}</h1>
-        <p>Hello and happy 4th of July!</p>
-        <p>Today is {new Date().toLocaleString()}</p>
-        <p>What is 2 + 2? It equals {2 + 2}</p>
+        <h1>📱</h1>
+        {showWarning() === true && <h3>😤</h3>}
       </div>
     );
   }
