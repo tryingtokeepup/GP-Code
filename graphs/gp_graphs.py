@@ -62,25 +62,96 @@ class Graph:
                 # Then PUSH all of its neighbors to the back of the STACK
                 for neighbor in self.vertices[vertex]:
                     stack.push(neighbor)
+        return visited
 
-    def dft_recursive(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
-        This should be done using recursion.
-        """
-        pass  # TODO
+    def dft_recursive(self, starting_vertex, visited=None):
+        # base case
+        # you don't need to explicitedly set a base case; the code just needs to work to an ending, and exit out appropiately
+        # the visited set should probably have ... the starting_vertex already inside it
+        if visited is None:
+            visited = set()
+
+        visited.add(starting_vertex)
+        print(starting_vertex)
+        # well, let's ... check all the neighbors of that starting_vertex, and run dft_recursive on them
+        for neighbor in self.vertices[starting_vertex]:
+            if neighbor not in visited:
+                self.dft_recursive(neighbor, visited)
+
+# starting_vertex = 1
+# visited = { 1 }
+
+# neighbor = 2
+
+# starting_vertex = 2
+# visited = { 1 , 2 }
+
+# neighbor = 3, 5
+
+
+# starting_vertex = 3
+# visited = { 1 , 2 , 3}
+
+# neighbor =
+
 
     def bfs(self, starting_vertex, destination_vertex):
-        """
-        Return a list containing the shortest path from
-        starting_vertex to destination_vertex in
-        breath-first order.
-        """
-        pass  # TODO
+        # create an empty queue, add the starting vertex
+        if starting_vertex is destination_vertex:
+            print("Lol that's funny")
+            return starting_vertex
+        queue = Queue()
+        queue.enqueue([starting_vertex])
+        visited = set()
+        print(visited)
+        while queue.size() > 0:
+            # dequeue the first path
+            path = queue.dequeue()
+            print(path)
+            # we need to grab the last vertex of the path (hint, path is an array)
+            vertex = path[-1]
+            if vertex == destination_vertex:
+                return path
+            if vertex not in visited:
+                visited.add(vertex)
+            for neighbor in self.vertices[vertex]:
+
+                # create a copy path for each of those neighbors, and then append neighbor to that copy
+                path_copy = path.copy()
+                path_copy.append(neighbor)
+                if neighbor == destination_vertex:
+
+                    return path_copy
+                queue.enqueue(path_copy)
 
     def dfs(self, starting_vertex, destination_vertex):
-        pass
+        # create an empty queue, add the starting vertex
+        if starting_vertex is destination_vertex:
+            print("Lol that's funny")
+            return starting_vertex
+        stack = Stack()
+        stack.push([starting_vertex])
+        visited = set()
+        print(visited)
+        while stack.size() > 0:
+            # dequeue the first path
+            path = stack.pop()
+            print(path)
+            # we need to grab the last vertex of the path (hint, path is an array)
+            vertex = path[-1]
+            if vertex == destination_vertex:
+                return path
+            if vertex not in visited:
+                visited.add(vertex)
+            for neighbor in self.vertices[vertex]:
+
+                # create a copy path for each of those neighbors, and then append neighbor to that copy
+                path_copy = path.copy()
+                path_copy.append(neighbor)
+                if neighbor == destination_vertex:
+
+                    return path_copy
+                stack.push(path_copy)
 
 
 # BFS
@@ -133,7 +204,7 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
-    graph.dft(1)
+    # print(graph.dft(1))
 
     '''
     Valid BFT paths:
@@ -159,17 +230,20 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
-   # graph.dft_recursive(1)
+    # graph.dft_recursive(1)
+    # print("---0----")
+    # graph.dft_recursive(1)
+    #print("what the heck?")
 
     '''
     Valid BFS path:
         [1, 2, 4, 6]
     '''
-    # print(graph.bfs(1, 6))
+    #print(graph.bfs(1, 3))
 
     '''
     Valid DFS paths:
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
-    # print(graph.dfs(1, 6))
+    print(graph.dfs(1, 6))
