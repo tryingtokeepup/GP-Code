@@ -22,27 +22,27 @@ D
 # once we are done with the above, let's ... return the kth node
 
 
-def kth_node_from_end(head, k):
+# def kth_node_from_end(head, k):
 
-    if head == None:
-        return ("Gosh, please put in an actual linked_list")
-        return -1
-    first_pointer = self.head
-    second_pointer = self.head
+#     if head == None:
+#         return ("Gosh, please put in an actual linked_list")
+#         return -1
+#     first_pointer = self.head
+#     second_pointer = self.head
 
-    counter = 1
+#     counter = 1
 
-    while counter < K:
-        first_pointer.next()
-        # if the above hits a NULL before the counter reaches K, then let's get out of here and return a NULL!
-        if first_pointer == None:
-            return -1 / None
-        else:
+#     while counter < K:
+#         first_pointer.next()
+#         # if the above hits a NULL before the counter reaches K, then let's get out of here and return a NULL!
+#         if first_pointer == None:
+#             return -1 / None
+#         else:
 
-            counter += 1
-    while self.first_pointer.next() != None:
+#             counter += 1
+#     while self.first_pointer.next() != None:
 
-        self.first_pointer.next()
-        self.second_pointer.next()
+#         self.first_pointer.next()
+#         self.second_pointer.next()
 
-    return second_pointer
+#     return second_pointer
