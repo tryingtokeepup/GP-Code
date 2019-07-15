@@ -21,3 +21,9 @@ Status codes =>
 500s => Server errors
 
 SQL => Querys!
+
+ComponentDidUpdate {
+
+    dataRange: Leads
+
+}
