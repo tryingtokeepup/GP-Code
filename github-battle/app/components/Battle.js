@@ -48,7 +48,13 @@ class PlayerInput extends React.Component {
           {this.props.label}
         </label>
         <div className="row player-inputs">
-          <input type="text" id="username" className="input-light" />
+          <input
+            type="text"
+            id="username"
+            className="input-light"
+            placeholder="github username"
+            autoComplete="off"
+          />
         </div>
       </form>
     );
