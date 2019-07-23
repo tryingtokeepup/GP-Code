@@ -25,23 +25,69 @@ Array *create_array(int capacity)
     return arr;
 }
 
-void destory_array(Array *arr)
+void destroy_array(Array *arr)
 {
 
-    // free all the elements
-    // loop over all the ... array elements? maybe use count = > i++ till arr->count
-    // free(arr->elements[i]
+    // Free all elements
+    for (int i = 0; i < arr->count; i++)
+    {
+        free(arr->elements[i]);
+    }
 
-    //free the pointer to the elements (arr->elements)
-    //free the actual array
+    // Free array
+    free(arr->elements);
+    free(arr);
 }
+
+void arr_append(Array *arr, char *element)
+{
+
+    if (arr->capacity <= arr->count)
+    {
+
+        fprintf(stderr, "Yo, INDEXERRORRRRR!");
+        return;
+    };
+
+    // otherwise, let's copy elements and append to the back of the array
+    // strdup is recommended => hidden malloc inside here
+    char *element_copy = strdup(element);
+    arr->elements[arr->count] = element_copy;
+
+    arr->count++;
+}
+char *arr_read(Array *arr, int index)
+{
+
+    // Throw an error if the index is greater or equal to than the current count
+    // you can hit the null character, no biggie, because you disregard it anyway?
+    if (index > arr->count)
+    {
+        //printf("the index is out of range, check it real quick.\n");
+        return NULL;
+    }
+    // Otherwise, return the element at the given index
+    //fprintf("Here's the darn thing: %s\n", arr->elements[index]);
+    return arr->elements[index];
+}
+
+#ifndef TESTING
 int main(void)
 {
+
     Array *arr = create_array(4);
 
-    // Note: adding things to the array like this (this is hard-coded) is for DEMO purpose ONLY.
+    //arr_insert(arr, "STRING1", 0);
+    arr_append(arr, "STRING1");
+    arr_read(arr, 0);
+    //   arr_insert(arr, "STRING2", 0);
+    //   arr_insert(arr, "STRING3", 1);
+    //   arr_print(arr);
+    //   arr_remove(arr, "STRING3");
+    //   arr_print(arr);
 
-    arr->elements[0] = "String1";
-    arr->elements[1] = "String2";
+    destroy_array(arr);
+
     return 0;
 }
+#endif
