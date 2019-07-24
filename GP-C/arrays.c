@@ -80,6 +80,9 @@ int main(void)
     //arr_insert(arr, "STRING1", 0);
     arr_append(arr, "STRING1");
     arr_read(arr, 0);
+
+    // printf, fprintf, sprintf
+    fprintf(stdout, "yo guys, it toally works now lol: %s\n", arr_read(arr, 0));
     //   arr_insert(arr, "STRING2", 0);
     //   arr_insert(arr, "STRING3", 1);
     //   arr_print(arr);
