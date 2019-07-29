@@ -41,6 +41,10 @@ class PlayerInput extends React.Component {
     event.preventDefault();
     this.props.onSubmit(this.state.username);
   }
+
+  handleChange(event) {
+    this.setState({ username: event.target.value });
+  }
   render() {
     return (
       <form className="column player" onSubmit={this.handleSubmit}>
@@ -54,7 +58,16 @@ class PlayerInput extends React.Component {
             className="input-light"
             placeholder="github username"
             autoComplete="off"
+            value={this.state.username}
+            onChange={this.handleChange}
           />
+          <button
+            className="btn btn-dark"
+            type="submit"
+            disabled={!this.state.username}
+          >
+            Submit
+          </button>
         </div>
       </form>
     );
