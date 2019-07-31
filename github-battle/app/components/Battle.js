@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUserFriends, FaFighterJet, FaTrophy } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 function Instructions() {
   return (
@@ -35,6 +36,7 @@ class PlayerInput extends React.Component {
       usersname: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(event) {
@@ -74,11 +76,21 @@ class PlayerInput extends React.Component {
   }
 }
 
+PlayerInput.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired
+};
+
 export default class Battle extends React.Component {
   render() {
     return (
       <React.Fragment>
         <Instructions />
+        {/* We are trying to submit some sort of value to onSubmit */}
+        <PlayerInput
+          label="label"
+          onSubmit={value => console.log('value = ', value)}
+        />
       </React.Fragment>
     );
   }
