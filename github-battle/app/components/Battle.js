@@ -86,12 +86,14 @@ export default class Battle extends React.Component {
     return (
       <React.Fragment>
         <Instructions />
-        {/* We are trying to submit some sort of value to onSubmit */}
-        <PlayerInput
-          label="label"
-          onSubmit={value => console.log('value = ', value)}
-        />
       </React.Fragment>
     );
   }
 }
+
+// {/* We are trying to submit some sort of value to onSubmit */}
+
+// <PlayerInput
+// label="label"
+// onSubmit={value => console.log('value = ', value)}
+// />
