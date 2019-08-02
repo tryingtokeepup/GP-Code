@@ -82,6 +82,9 @@ PlayerInput.propTypes = {
 };
 
 export default class Battle extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <React.Fragment>
